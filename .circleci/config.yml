@@ -6,18 +6,18 @@ jobs:
       - image: cimg/node:19.0.1
     steps:
       - run:
-        name: first build step
-        command: |
-          echo "first build step"
+          name: first build step
+          command: |
+            echo "first build step"
 
   Test:
      docker:
       - image: cimg/node:19.0.1
      steps: 
       - run:
-        name: first test steps
-        command: |
-          echo "first test step"  
+          name: first test steps
+          command: |
+            echo "first test step"  
 
 workflows:
   workspace-workflow:
