@@ -5,24 +5,44 @@ jobs:
     docker:
       - image: cimg/node:19.0.1
     steps:
+      - checkout
       - run:
-          name: first build step
+          name: Install npm
           command: |
-            echo "first build step"
+            npm install
+      - run:
+          name: Lint the code
+          command: |
+            npm run lint
 
-  Test:
+  test:
+     docker:
+      - image: cimg/node:19.0.1
+     steps: 
+      - checkout
+      - run:
+          name: Install npm
+          command: |
+            npm install      
+      - run:
+          name: Test the package
+          command: |
+            npm run test 
+  analyze:
      docker:
       - image: cimg/node:19.0.1
      steps: 
       - run:
-          name: first test steps
+          name: Analyze the code
           command: |
-            echo "first test step"  
-
+            npm audit
 workflows:
   workspace-workflow:
     jobs:
       - build
-      - Test:
+      - test:
           requires:
             - build
+      - analyze:
+          requires:
+            - test
