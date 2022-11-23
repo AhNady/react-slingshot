@@ -36,7 +36,7 @@ jobs:
       - run:
           name: Analyze the code
           command: |
-            npm audit
+            npm audit fix
 workflows:
   workspace-workflow:
     jobs:
