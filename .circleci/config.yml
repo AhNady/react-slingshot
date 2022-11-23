@@ -14,7 +14,7 @@ jobs:
       - image: cimg/node:19.0.1
      steps: 
       - run:
-        name: first test step
+        name: first test steps
         command: echo "first test step"  
 
 workflows:
